@@ -1,0 +1,290 @@
+[gd_scene load_steps=34 format=3 uid="uid://cawhb8gwge0hh"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_dymhh"]
+[ext_resource type="Texture2D" uid="uid://0k80qmhinkxb" path="res://unnamed.png" id="1_kfrpe"]
+[ext_resource type="Texture2D" uid="uid://c80hf0hge3x5s" path="res://unnamed (1).png" id="3_2fiei"]
+[ext_resource type="Texture2D" uid="uid://clry5x0g8rpw5" path="res://unnamed (2).png" id="5_pdvqp"]
+[ext_resource type="Texture2D" uid="uid://by3wr8env4ytx" path="res://unnamed (3).png" id="6_5bqdj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lkord"]
+size = Vector2(15.375, 26.875)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6m2x"]
+atlas = ExtResource("3_2fiei")
+region = Rect2(99, 0, 31, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kad55"]
+atlas = ExtResource("3_2fiei")
+region = Rect2(6, 50, 31, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcim2"]
+atlas = ExtResource("3_2fiei")
+region = Rect2(6, 0, 31, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tu88q"]
+atlas = ExtResource("3_2fiei")
+region = Rect2(99, 0, 31, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpher"]
+atlas = ExtResource("3_2fiei")
+region = Rect2(130, 0, 31, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2aqss"]
+atlas = ExtResource("3_2fiei")
+region = Rect2(161, 0, 31, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ir7n7"]
+atlas = ExtResource("3_2fiei")
+region = Rect2(6, 50, 31, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vu3uf"]
+atlas = ExtResource("3_2fiei")
+region = Rect2(37, 50, 31, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgq6d"]
+atlas = ExtResource("3_2fiei")
+region = Rect2(68, 50, 31, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uopqa"]
+atlas = ExtResource("3_2fiei")
+region = Rect2(6, 0, 31, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtr3c"]
+atlas = ExtResource("3_2fiei")
+region = Rect2(37, 0, 31, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8e58i"]
+atlas = ExtResource("3_2fiei")
+region = Rect2(68, 0, 31, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iaelb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6m2x")
+}],
+"loop": true,
+"name": &"idle_down",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kad55")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle_right",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcim2")
+}],
+"loop": true,
+"name": &"idle_up",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tu88q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpher")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2aqss")
+}],
+"loop": true,
+"name": &"move_down",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ir7n7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vu3uf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgq6d")
+}],
+"loop": true,
+"name": &"move_left",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uopqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtr3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8e58i")
+}],
+"loop": true,
+"name": &"move_up",
+"speed": 8.0
+}]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bg521"]
+distance = -9.0
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_adefw"]
+a = Vector2(-92, -78)
+b = Vector2(517, -80)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_6ppmt"]
+a = Vector2(71, -300)
+b = Vector2(72, 104)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xfl5r"]
+normal = Vector2(-1, 0)
+distance = 120.0
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_jn7ff"]
+a = Vector2(73, -220)
+b = Vector2(132, -91)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_df0nl"]
+a = Vector2(-173, -222)
+b = Vector2(73, -220)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_75un8"]
+a = Vector2(278, -182)
+b = Vector2(132, -92)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ibrww"]
+a = Vector2(323, -113)
+b = Vector2(206, -45)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_5uwcy"]
+a = Vector2(206, -46)
+b = Vector2(430, 32)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_7k2k6"]
+a = Vector2(278, -182)
+b = Vector2(361, -133)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w2yyb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ew4nh"]
+size = Vector2(286.667, 326.667)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qoxk5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_02ugn"]
+size = Vector2(260, 306.667)
+
+[node name="2FishermanMain" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -168.0
+offset_top = -346.0
+offset_right = 444.0
+offset_bottom = 62.0
+texture = ExtResource("1_kfrpe")
+metadata/_edit_use_anchors_ = true
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(20, -41)
+script = ExtResource("1_dymhh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_lkord")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(1, 0)
+zoom = Vector2(1.5, 1.5)
+position_smoothing_enabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+position = Vector2(0, -1)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_iaelb")
+animation = &"idle_right"
+autoplay = "idle_down"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(8, 27)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-9, 27)
+shape = SubResource("WorldBoundaryShape2D_bg521")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-81, -295)
+shape = SubResource("SegmentShape2D_adefw")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-246, -73)
+shape = SubResource("SegmentShape2D_6ppmt")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(558, -42)
+shape = SubResource("WorldBoundaryShape2D_xfl5r")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_jn7ff")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_df0nl")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_75un8")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_ibrww")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_5uwcy")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-150, 88)
+shape = SubResource("SegmentShape2D_7k2k6")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_left = 118.0
+offset_top = -68.0
+offset_right = 512.0
+offset_bottom = 324.0
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("5_pdvqp")
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TextureRect2"]
+physics_material_override = SubResource("PhysicsMaterial_w2yyb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect2/StaticBody2D"]
+position = Vector2(223.333, 210)
+shape = SubResource("RectangleShape2D_ew4nh")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+offset_left = -116.0
+offset_top = -76.0
+offset_right = 278.0
+offset_bottom = 316.0
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("5_pdvqp")
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TextureRect3"]
+physics_material_override = SubResource("PhysicsMaterial_qoxk5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect3/StaticBody2D"]
+position = Vector2(216.667, 200)
+shape = SubResource("RectangleShape2D_02ugn")
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+offset_left = -98.0
+offset_top = -95.0
+offset_right = 376.0
+offset_bottom = 431.0
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("6_5bqdj")
+metadata/_edit_use_anchors_ = true

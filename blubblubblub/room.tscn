@@ -1,0 +1,197 @@
+[gd_scene load_steps=22 format=3 uid="uid://dji86ihgj84yr"]
+
+[ext_resource type="Texture2D" uid="uid://bv12tltd6fvyr" path="res://Room.png" id="1_aflaj"]
+[ext_resource type="Script" path="res://SkieCrawfish.gd" id="2_q8shg"]
+[ext_resource type="Texture2D" uid="uid://c80hf0hge3x5s" path="res://unnamed (1).png" id="3_fihkg"]
+[ext_resource type="Script" path="res://door.gd" id="4_83r17"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_quipf"]
+size = Vector2(11, 138)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bk8xe"]
+radius = 21.0238
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6m2x"]
+atlas = ExtResource("3_fihkg")
+region = Rect2(99, 0, 31, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kad55"]
+atlas = ExtResource("3_fihkg")
+region = Rect2(6, 50, 31, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcim2"]
+atlas = ExtResource("3_fihkg")
+region = Rect2(6, 0, 31, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tu88q"]
+atlas = ExtResource("3_fihkg")
+region = Rect2(99, 0, 31, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpher"]
+atlas = ExtResource("3_fihkg")
+region = Rect2(130, 0, 31, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2aqss"]
+atlas = ExtResource("3_fihkg")
+region = Rect2(161, 0, 31, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ir7n7"]
+atlas = ExtResource("3_fihkg")
+region = Rect2(6, 50, 31, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vu3uf"]
+atlas = ExtResource("3_fihkg")
+region = Rect2(37, 50, 31, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgq6d"]
+atlas = ExtResource("3_fihkg")
+region = Rect2(68, 50, 31, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uopqa"]
+atlas = ExtResource("3_fihkg")
+region = Rect2(6, 0, 31, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtr3c"]
+atlas = ExtResource("3_fihkg")
+region = Rect2(37, 0, 31, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8e58i"]
+atlas = ExtResource("3_fihkg")
+region = Rect2(68, 0, 31, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w64el"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6m2x")
+}],
+"loop": true,
+"name": &"idle_down",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kad55")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle_right",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcim2")
+}],
+"loop": true,
+"name": &"idle_up",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tu88q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpher")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2aqss")
+}],
+"loop": true,
+"name": &"move_down",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ir7n7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vu3uf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgq6d")
+}],
+"loop": true,
+"name": &"move_left",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uopqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtr3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8e58i")
+}],
+"loop": true,
+"name": &"move_up",
+"speed": 8.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_02shr"]
+bg_color = Color(0.719454, 2.55093e-06, 5.77569e-07, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 20
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4n723"]
+radius = 63.1981
+
+[node name="Room" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(3, 3)
+texture = ExtResource("1_aflaj")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+build_mode = 1
+polygon = PackedVector2Array(209, 206, 298, 206, 307, 261, 314, 263, 309, 224, 372, 222, 390, 292, 432, 293, 445, 225, 502, 223, 508, 381, 475, 384, 462, 400, 458, 457, 288, 458, 289, 523, 197, 523, 176, 485, 146, 461, 114, 450, 66, 462, 81, 257, 205, 262)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(80, 280)
+script = ExtResource("4_83r17")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-4.5, 79)
+shape = SubResource("RectangleShape2D_quipf")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(426, 431)
+script = ExtResource("2_q8shg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CircleShape2D_bk8xe")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_w64el")
+animation = &"idle_right"
+autoplay = "idle_down"
+
+[node name="PlayerHealthBar" type="ProgressBar" parent="Player"]
+offset_left = -62.0
+offset_top = -65.0
+offset_right = 64.0
+offset_bottom = -55.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_02shr")
+max_value = 1000.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="AttackArea" type="Area2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/AttackArea"]
+shape = SubResource("CircleShape2D_4n723")
