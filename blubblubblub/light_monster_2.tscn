@@ -1,0 +1,116 @@
+[gd_scene load_steps=15 format=3 uid="uid://dopirymfprvxx"]
+
+[ext_resource type="Script" path="res://light_monster_2.gd" id="1_wes0m"]
+[ext_resource type="Texture2D" uid="uid://be5ihhn682gql" path="res://Light Orb sprites.png" id="2_wjo2o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qh6h2"]
+radius = 31.7805
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ycah7"]
+bg_color = Color(0.719454, 2.55093e-06, 5.77569e-07, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 20
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uu2uk"]
+atlas = ExtResource("2_wjo2o")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbuum"]
+atlas = ExtResource("2_wjo2o")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6lws"]
+atlas = ExtResource("2_wjo2o")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dn6qy"]
+atlas = ExtResource("2_wjo2o")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lyk30"]
+atlas = ExtResource("2_wjo2o")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l233b"]
+atlas = ExtResource("2_wjo2o")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1m8jh"]
+atlas = ExtResource("2_wjo2o")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibwen"]
+atlas = ExtResource("2_wjo2o")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqmax"]
+atlas = ExtResource("2_wjo2o")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dk15x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uu2uk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbuum")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6lws")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dn6qy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lyk30")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l233b")
+}],
+"loop": true,
+"name": &"melee_attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1m8jh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibwen")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqmax")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[node name="LightMonster2" type="CharacterBody2D"]
+position = Vector2(1949, 506)
+script = ExtResource("1_wes0m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qh6h2")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -50.0
+offset_top = -65.0
+offset_right = 50.0
+offset_bottom = -50.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_ycah7")
+max_value = 10000.0
+show_percentage = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dk15x")
+animation = &"move"

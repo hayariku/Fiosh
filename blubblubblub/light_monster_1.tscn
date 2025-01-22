@@ -1,0 +1,90 @@
+[gd_scene load_steps=11 format=3 uid="uid://ow15nlr6hs2v"]
+
+[ext_resource type="Script" path="res://light_monster_1.gd" id="1_lhwjj"]
+[ext_resource type="Texture2D" uid="uid://hn7h78avb416" path="res://Light Monster sprite.png" id="2_mx3by"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lmabp"]
+radius = 17.0
+height = 34.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fuvks"]
+atlas = ExtResource("2_mx3by")
+region = Rect2(0, 0, 50, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vagiv"]
+atlas = ExtResource("2_mx3by")
+region = Rect2(0, 0, 50, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ok72"]
+atlas = ExtResource("2_mx3by")
+region = Rect2(50, 0, 50, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37tgx"]
+atlas = ExtResource("2_mx3by")
+region = Rect2(0, 0, 50, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkpm4"]
+atlas = ExtResource("2_mx3by")
+region = Rect2(50, 0, 50, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_unxos"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fuvks")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 6.0,
+"texture": SubResource("AtlasTexture_vagiv")
+}, {
+"duration": 24.0,
+"texture": SubResource("AtlasTexture_4ok72")
+}],
+"loop": true,
+"name": &"melee_attack",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37tgx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkpm4")
+}],
+"loop": true,
+"name": &"moving",
+"speed": 4.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ycah7"]
+bg_color = Color(0.719454, 2.55093e-06, 5.77569e-07, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 20
+
+[node name="LightMonster1" type="CharacterBody2D"]
+position = Vector2(887, 728)
+script = ExtResource("1_lhwjj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_lmabp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.465, 1.39583)
+sprite_frames = SubResource("SpriteFrames_unxos")
+animation = &"moving"
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -50.0
+offset_top = -65.0
+offset_right = 50.0
+offset_bottom = -50.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_ycah7")
+max_value = 10000.0
+show_percentage = false
