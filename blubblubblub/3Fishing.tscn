@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b655s0iacpemj"]
+[gd_scene load_steps=13 format=3 uid="uid://b655s0iacpemj"]
 
 [ext_resource type="Script" path="res://3_fishing.gd" id="1_7o8bh"]
 [ext_resource type="Texture2D" uid="uid://djtnqeb8jiss8" path="res://3F1.png" id="2_t0nec"]
@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://d04nwyjmfo3l1" path="res://FIsherman 4.png" id="6_rwjlb"]
 [ext_resource type="Texture2D" uid="uid://bs8j51i8l2g4q" path="res://Fisherman5.png" id="7_tt2gm"]
 [ext_resource type="Texture2D" uid="uid://d3ja3c011xiy0" path="res://Fisherman1.png" id="8_b5nyf"]
-[ext_resource type="Texture2D" uid="uid://4evohqkyb163" path="res://Fish1.png" id="9_6d10u"]
 [ext_resource type="Texture2D" uid="uid://hi64fo840rmd" path="res://Fisherman2.png" id="9_nvrmm"]
+[ext_resource type="PackedScene" uid="uid://dmutocms1icyv" path="res://fish_1.tscn" id="10_qgu1l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ybrl4"]
 radius = 43.0
@@ -45,9 +45,6 @@ animations = [{
 "speed": 4.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3f0cq"]
-radius = 30.0167
-
 [node name="3Fishing" type="Node2D"]
 script = ExtResource("1_7o8bh")
 
@@ -64,7 +61,7 @@ position = Vector2(337, 370)
 [node name="Camera2D" type="Camera2D" parent="Hook"]
 position = Vector2(-1, 0)
 limit_left = 0
-limit_top = -10000
+limit_top = 0
 limit_right = 5170
 limit_bottom = 6000
 editor_draw_limits = true
@@ -83,14 +80,5 @@ scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_cpg4g")
 animation = &"PullBack"
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(1245, -188)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(-2, -1)
-shape = SubResource("CircleShape2D_3f0cq")
-
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(1, -1)
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("9_6d10u")
+[node name="Fish1" parent="." instance=ExtResource("10_qgu1l")]
+position = Vector2(571, 342)
