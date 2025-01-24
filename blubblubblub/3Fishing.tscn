@@ -71,11 +71,11 @@ scale = Vector2(0.15, 0.15)
 texture = ExtResource("3_2qfjf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hook"]
-position = Vector2(-2, -1)
+position = Vector2(1, 18)
 shape = SubResource("CircleShape2D_ybrl4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(238, 287)
+position = Vector2(247, 264)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_cpg4g")
 animation = &"PullBack"

@@ -25,6 +25,11 @@ var reel_enabled = false
 var rodlvl = 2
 var spoollvl = 2
 
+# Fish spawning variables
+var fish_scene = preload("res://fish_1.tscn")
+var fish_count = 5
+var fish_list = []
+
 @onready var hook = $Hook
 @onready var sprite = $Hook/Sprite2D
 @onready var camera = $Hook/Camera2D
@@ -34,6 +39,7 @@ func _ready():
 	origin_position = hook.global_position
 	camera.make_current()
 	print("Camera and sprite initialized.")
+	spawn_fish()  # Spawn fish when the game starts
 
 func _physics_process(delta):
 	handle_input(delta)
@@ -51,7 +57,7 @@ func handle_input(delta):
 		pull_back_to_origin(delta, true)
 	elif Input.is_action_pressed("f") and reel_enabled:
 		pull_back_to_origin(delta)
-	elif Input.is_action_pressed("j") and not casting and can_cast:
+	elif Input.is_action_just_pressed("j") and not casting and can_cast:
 		start_cast()
 	elif Input.is_action_just_pressed("g") and not is_fishing:
 		get_tree().change_scene_to_file("res://2FishermanMain.tscn")
@@ -175,3 +181,13 @@ func reset_casting_variables():
 	effective_radius = fishing_radius * spoollvl
 	hook.global_position = origin_position
 	can_move_hook = false
+
+# Spawn multiple fish at random positions
+func spawn_fish():
+	for i in range(fish_count):
+		var fish = fish_scene.instantiate()
+		var random_position = Vector2(randf_range(-fishing_radius, fishing_radius), randf_range(400, 600))
+		fish.global_position = random_position
+		add_child(fish)
+		fish_list.append(fish)
+		print("Fish spawned at position:", random_position)
