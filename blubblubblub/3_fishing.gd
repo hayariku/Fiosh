@@ -20,6 +20,7 @@ var effective_radius = 0.0
 var hook_hit_water = false
 var can_reel = false
 var reel_enabled = false
+var fishAmt = 0
 
 # Cast distance and line length based on rod level and spool level
 var rodlvl = 2
@@ -30,12 +31,18 @@ var spoollvl = 2
 @onready var camera = $Hook/Camera2D
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var charge_progress = $Hook/Camera2D/AnimatedSprite2D2
+@onready var fish = preload("res://fish_1.tscn")
 
 func _ready():
 	origin_position = hook.global_position
 	camera.make_current()
 	charge_progress.visible = false
 	print("Camera and sprite initialized.")
+	while fishAmt < 300:
+		fishAmt += 1
+		var fis = fish.instantiate()
+		fis.position = Vector2(571, 342)
+		add_child(fis)
 	
 
 func _physics_process(delta):
