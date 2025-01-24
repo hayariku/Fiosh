@@ -21,6 +21,7 @@ var hook_hit_water = false
 var can_reel = false
 var reel_enabled = false
 var fishAmt = 0
+@export var amount_of_fish = 100
 
 # Cast distance and line length based on rod level and spool level
 var rodlvl = 2
@@ -38,7 +39,7 @@ func _ready():
 	camera.make_current()
 	charge_progress.visible = false
 	print("Camera and sprite initialized.")
-	while fishAmt < 300:
+	while fishAmt < amount_of_fish:
 		fishAmt += 1
 		var fis = fish.instantiate()
 		fis.position = Vector2(571, 342)
