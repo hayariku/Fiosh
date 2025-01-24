@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://fakg1lf3mdb7"]
+
+[ext_resource type="Texture2D" uid="uid://cb5f1s1pklqom" path="res://pixilart-drawing.png" id="1_hp3go"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t3fep"]
+size = Vector2(127, 125)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hp3go")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_t3fep")
+
+[node name="Camera2D" type="Camera2D" parent="."]

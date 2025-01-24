@@ -1,0 +1,284 @@
+[gd_scene load_steps=30 format=3 uid="uid://c1hl8uc0xyld7"]
+
+[ext_resource type="Texture2D" uid="uid://c34lp40xekts7" path="res://pixil-frame-0 (8).png" id="1_jk3m6"]
+[ext_resource type="Script" path="res://SkieCrawfish.gd" id="2_vs7m1"]
+[ext_resource type="Texture2D" uid="uid://c80hf0hge3x5s" path="res://unnamed (1).png" id="3_t8ust"]
+[ext_resource type="Script" path="res://lich.gd" id="4_1va33"]
+[ext_resource type="Texture2D" uid="uid://hn7h78avb416" path="res://Light Monster sprite.png" id="5_843a5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_71fuj"]
+radius = 21.0238
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6m2x"]
+atlas = ExtResource("3_t8ust")
+region = Rect2(99, 0, 31, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kad55"]
+atlas = ExtResource("3_t8ust")
+region = Rect2(6, 50, 31, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcim2"]
+atlas = ExtResource("3_t8ust")
+region = Rect2(6, 0, 31, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tu88q"]
+atlas = ExtResource("3_t8ust")
+region = Rect2(99, 0, 31, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpher"]
+atlas = ExtResource("3_t8ust")
+region = Rect2(130, 0, 31, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2aqss"]
+atlas = ExtResource("3_t8ust")
+region = Rect2(161, 0, 31, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ir7n7"]
+atlas = ExtResource("3_t8ust")
+region = Rect2(6, 50, 31, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vu3uf"]
+atlas = ExtResource("3_t8ust")
+region = Rect2(37, 50, 31, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgq6d"]
+atlas = ExtResource("3_t8ust")
+region = Rect2(68, 50, 31, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uopqa"]
+atlas = ExtResource("3_t8ust")
+region = Rect2(6, 0, 31, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtr3c"]
+atlas = ExtResource("3_t8ust")
+region = Rect2(37, 0, 31, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8e58i"]
+atlas = ExtResource("3_t8ust")
+region = Rect2(68, 0, 31, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uuvar"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6m2x")
+}],
+"loop": true,
+"name": &"idle_down",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kad55")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle_right",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcim2")
+}],
+"loop": true,
+"name": &"idle_up",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tu88q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpher")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2aqss")
+}],
+"loop": true,
+"name": &"move_down",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ir7n7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vu3uf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgq6d")
+}],
+"loop": true,
+"name": &"move_left",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uopqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtr3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8e58i")
+}],
+"loop": true,
+"name": &"move_up",
+"speed": 8.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dxonn"]
+bg_color = Color(0.719454, 2.55093e-06, 5.77569e-07, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 20
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o7fdd"]
+radius = 63.1981
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ds2cv"]
+bg_color = Color(0.719454, 2.55093e-06, 5.77569e-07, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 20
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kergv"]
+radius = 31.7805
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fuvks"]
+atlas = ExtResource("5_843a5")
+region = Rect2(0, 0, 50, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vagiv"]
+atlas = ExtResource("5_843a5")
+region = Rect2(0, 0, 50, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ok72"]
+atlas = ExtResource("5_843a5")
+region = Rect2(50, 0, 50, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37tgx"]
+atlas = ExtResource("5_843a5")
+region = Rect2(0, 0, 50, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkpm4"]
+atlas = ExtResource("5_843a5")
+region = Rect2(50, 0, 50, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6cmkq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fuvks")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 6.0,
+"texture": SubResource("AtlasTexture_vagiv")
+}, {
+"duration": 24.0,
+"texture": SubResource("AtlasTexture_4ok72")
+}],
+"loop": true,
+"name": &"melee_attack",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37tgx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkpm4")
+}],
+"loop": true,
+"name": &"moving",
+"speed": 4.0
+}]
+
+[node name="BossArena" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_jk3m6")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(622, 2380)
+script = ExtResource("2_vs7m1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CircleShape2D_71fuj")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = 0
+limit_top = 0
+limit_right = 2500
+limit_bottom = 2500
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_uuvar")
+animation = &"idle_right"
+autoplay = "idle_down"
+
+[node name="PlayerHealthBar" type="ProgressBar" parent="Player"]
+offset_left = -62.0
+offset_top = -65.0
+offset_right = 64.0
+offset_bottom = -55.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_dxonn")
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="AttackArea" type="Area2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/AttackArea"]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_o7fdd")
+
+[node name="Lich" type="CharacterBody2D" parent="."]
+position = Vector2(1014, 782)
+script = ExtResource("4_1va33")
+
+[node name="HealthBar" type="ProgressBar" parent="Lich"]
+offset_left = -50.0
+offset_top = -65.0
+offset_right = 50.0
+offset_bottom = -50.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_ds2cv")
+max_value = 10000.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lich"]
+shape = SubResource("CircleShape2D_kergv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Lich"]
+sprite_frames = SubResource("SpriteFrames_6cmkq")
+animation = &"melee_attack"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+build_mode = 1
+polygon = PackedVector2Array(1106, 2487, 1081, 1847, 1459, 1786, 1646, 1781, 1782, 1655, 2069, 1474, 2301, 1146, 2160, 647, 2049, 551, 1666, 551, 1358, 511, 1106, 536, 804, 526, 622, 526, 285, 516, 164, 738, 8, 884, 48, 1091, 199, 1464, 325, 1590, 683, 1655, 759, 1837, 688, 1998, 537, 2179, 391, 2351, 265, 2502)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+build_mode = 1
+polygon = PackedVector2Array(2487, 2497, 2497, 2, 3, -3, -2, 2507)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
+build_mode = 1
+polygon = PackedVector2Array(1061, 1141, 1454, 1212, 1540, 1136, 1459, 970, 1207, 1005, 1106, 904, 1016, 1010)
