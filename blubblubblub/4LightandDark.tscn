@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://ow15nlr6hs2v" path="res://light_monster_1.tscn" id="4_80yv1"]
 [ext_resource type="PackedScene" uid="uid://dopirymfprvxx" path="res://light_monster_2.tscn" id="5_4mi6i"]
 [ext_resource type="Script" path="res://pathtobossfight.gd" id="8_jajkn"]
-[ext_resource type="PackedScene" uid="uid://b3gywqwixegyj" path="res://light_monster_1_1.tscn" id="8_nmw65"]
-[ext_resource type="PackedScene" uid="uid://cm38aeshuwoeu" path="res://light_monster_2_1.tscn" id="9_d3a40"]
+[ext_resource type="PackedScene" path="res://light_monster_1_1.tscn" id="8_nmw65"]
+[ext_resource type="PackedScene" path="res://light_monster_2_1.tscn" id="9_d3a40"]
 [ext_resource type="Script" path="res://street_spawn.gd" id="9_iavkf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kuc4c"]

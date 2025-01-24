@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 # Fish behavior variables
 @export var move_speed: float = 100.0
-@export var detection_radius: float = 150.0
+@export var detection_radius: float = 200.0  # Larger radius for testing
 @export var angle_change_interval: float = 2.0  # Time interval (seconds) to change direction
 
 # States
@@ -10,6 +10,7 @@ var is_aggro: bool = false
 var direction: Vector2 = Vector2.ZERO
 var hook: Node2D
 var angle_timer: Timer
+var is_caught: bool = false  # Tracks if the fish is caught
 
 func _ready():
 	# Reference the hook node (adjust the path as necessary)
@@ -24,32 +25,37 @@ func _ready():
 	add_child(angle_timer)
 	angle_timer.start()
 	angle_timer.connect("timeout", Callable(self, "_on_angle_change_timer_timeout"))
+	
+	# Connect Area2D's body_entered signal for catching
+	var area = $Area2D
+	area.connect("body_entered", Callable(self, "_on_area_entered"))
 
 func _physics_process(delta):
-	if is_aggro:
+	if is_caught:
+		# Snap to the hook's position and stop movement
+		global_position = hook.global_position + Vector2(0, 10)  # Adjusted to lower the fish
+		velocity = Vector2.ZERO
+	elif is_aggro:
 		detect_and_move_to_hook()
 	else:
 		# Move the fish in the current direction
 		velocity = direction * move_speed
 		move_and_slide()
 
-func patrol():
-	# This function is unused in this new implementation but kept for future adjustments if needed
-	pass
-
 func detect_and_move_to_hook():
 	if hook.global_position.distance_to(global_position) <= detection_radius:
 		# Turn toward the hook
 		direction = (hook.global_position - global_position).normalized()
 
-		# Attach if touching the hook
-		if hook.global_position.distance_to(global_position) < 10:
-			attach_to_hook()
+func _on_area_entered(body):
+	# Check if the hook entered the fish's Area2D
+	if body == hook and not is_caught:
+		attach_to_hook()
 
 func attach_to_hook():
 	is_aggro = false
-	# Attach the fish to the hook by parenting it or setting its position to the hook
-	global_position = hook.global_position
+	is_caught = true
+	global_position = hook.global_position + Vector2(0, 10)  # Add a small Y-offset to lower the fish
 	print("Fish attached to hook!")
 
 func set_random_angle():
