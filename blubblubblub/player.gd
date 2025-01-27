@@ -28,9 +28,9 @@ func _physics_process(delta):
 		# Switch to fishing scene
 		get_tree().change_scene_to_file("res://3Fishing.tscn")
 		
-	if Input.is_action_just_pressed("p"):
+	#if Input.is_action_just_pressed("p"):
 		# Switch to another scene
-		get_tree().change_scene_to_file("res://room.tscn")
+		#get_tree().change_scene_to_file("res://room.tscn")
 
 func get_input(): 
 	input.x = int(Input.is_action_pressed("ui_right")) + int(Input.is_action_pressed("d")) - int(Input.is_action_pressed("ui_left")) - int(Input.is_action_pressed("a"))

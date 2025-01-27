@@ -5,6 +5,9 @@ extends CharacterBody2D
 @export var detection_radius: float = 200.0  # Larger radius for testing
 @export var angle_change_interval: float = 2.0  # Time interval (seconds) to change direction
 
+# Weight impacts fish size in-game
+@export var weight: float = 1.0  # We'll randomize this in _ready()
+
 # States
 var is_aggro: bool = false
 var direction: Vector2 = Vector2.ZERO
@@ -13,9 +16,21 @@ var angle_timer: Timer
 var is_caught: bool = false  # Tracks if this fish is caught
 
 func _ready():
+	randomize()
+	# Randomize the fish's weight
+	weight = randf_range(0.5, 5.0)
+	
+	# Spawn the fish within x: 0..5200, y: 700..1200
+	global_position = Vector2(
+		randf_range(0, 5200),
+		randf_range(700, 1200)
+	)
+
+	# Adjust the fish's scale based on its randomized weight
+	scale = Vector2.ONE * weight  
+
 	# Reference the hook node (adjust the path as necessary)
 	hook = get_parent().get_node("Hook")
-	randomize()
 
 	# Set up initial direction and timer for angle change
 	set_random_angle()
@@ -33,12 +48,11 @@ func _ready():
 func _physics_process(delta):
 	if is_caught:
 		# Snap to the hook's position and stop movement
-		global_position = hook.global_position + Vector2(0, 10)  # Adjusted to lower the fish
+		global_position = hook.global_position + Vector2(0, 10)  # Adjust to lower the fish
 		velocity = Vector2.ZERO
 	elif is_aggro:
 		detect_and_move_to_hook()
 	else:
-		# Move the fish in the current direction
 		velocity = direction * move_speed
 		move_and_slide()
 
@@ -55,9 +69,9 @@ func _on_area_entered(body):
 func attach_to_hook():
 	is_aggro = false
 	is_caught = true
-	global_position = hook.global_position + Vector2(0, 10)  # Add a small Y-offset to lower the fish
-	get_tree().root.set_meta("fish_caught", true)  # Set the global state indicating a fish is caught
-	print("Fish attached to hook!")
+	global_position = hook.global_position + Vector2(0, 10)  # Small Y-offset
+	get_tree().root.set_meta("fish_caught", true)
+	print("Fish attached to hook! Weight:", weight)
 
 func set_random_angle():
 	# Pick a random angle in degrees from either range 10-35° or 160-200°
@@ -75,7 +89,7 @@ func _on_angle_change_timer_timeout():
 	set_random_angle()
 
 func is_another_fish_caught() -> bool:
-	# Check if any other fish is already caught by checking the global state
+	# Check if any other fish is already caught
 	return get_tree().root.has_meta("fish_caught") and get_tree().root.get_meta("fish_caught")
 
 func release_fish():

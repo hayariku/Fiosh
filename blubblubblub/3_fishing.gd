@@ -164,8 +164,10 @@ func pull_back_to_origin(delta, fast_reel = false):
 
 	print("Effective Radius: ", effective_radius, " | Current Height: ", hook.global_position.y)
 
+	# When the hook is close enough to the origin, finalize
 	if current_distance < 80:
 		hook.global_position = origin_position
+		collect_caught_fish()  # Check for caught fish and collect them
 		reset_casting_variables()
 
 # Reset casting variables once reeling is complete
@@ -191,3 +193,22 @@ func spawn_fish():
 		add_child(fish)
 		fish_list.append(fish)
 		print("Fish spawned at position:", random_position)
+
+# Collect caught fish once the hook is reeled in
+func collect_caught_fish():
+	var caught_fish = []
+	
+	# Find any fish that have is_caught == true
+	for fish in fish_list:
+		if fish.is_caught:
+			caught_fish.append(fish)
+	
+	# Remove them from the scene and the fish_list
+	for fish in caught_fish:
+		fish_list.erase(fish)
+		fish.queue_free()
+		print("Fish collected!")
+
+	# Reset the "fish_caught" meta so a new fish can be caught later
+	if get_tree().root.has_meta("fish_caught"):
+		get_tree().root.set_meta("fish_caught", false)

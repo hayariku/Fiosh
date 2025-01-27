@@ -2,7 +2,7 @@ extends Node2D
 
 @export var fish_scene: PackedScene  # Drag and drop `Fish.tscn` here in the inspector
 @export var number_of_fish: int = 5  # Number of fish to spawn
-@export var spawn_area_size: Vector2 = Vector2(500, 500)  # The size of the spawning area
+@export var spawn_area_size: Vector2 = Vector2(2000, 500)  # The size of the spawning area
 
 func _ready():
 	# Spawn the specified number of fish
