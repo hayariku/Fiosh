@@ -34,6 +34,7 @@ var fish_list = []
 @onready var sprite = $Hook/Sprite2D
 @onready var camera = $Hook/Camera2D
 @onready var animated_sprite = $AnimatedSprite2D
+var dialogue = load("res://dialogue.tscn")
 
 func _ready():
 	origin_position = hook.global_position
@@ -61,6 +62,10 @@ func handle_input(delta):
 		start_cast()
 	elif Input.is_action_just_pressed("g") and not is_fishing:
 		get_tree().change_scene_to_file("res://2FishermanMain.tscn")
+	elif Input.is_action_just_pressed("m"):
+		var text = dialogue.instantiate()
+		add_child(text)
+		
 
 # Start casting and reset variables
 func start_cast():

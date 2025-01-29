@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5ed0wdkqy31w"]
+
+[ext_resource type="FontFile" uid="uid://dqapoy64226ik" path="res://ByteBounce.ttf" id="1_7ramv"]
+[ext_resource type="Script" path="res://dialogue.gd" id="1_plkxy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xqrrw"]
+font = ExtResource("1_7ramv")
+font_size = 100
+
+[node name="dialogue" type="Node2D"]
+script = ExtResource("1_plkxy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 291.0
+offset_top = 527.0
+offset_right = 822.0
+offset_bottom = 596.0
+text = "Skye Crawford"
+label_settings = SubResource("LabelSettings_xqrrw")
