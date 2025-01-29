@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b655s0iacpemj"]
+[gd_scene load_steps=13 format=3 uid="uid://b655s0iacpemj"]
 
 [ext_resource type="Script" path="res://3_fishing.gd" id="1_7o8bh"]
 [ext_resource type="Texture2D" uid="uid://02g0frwxfocy" path="res://BridgeBackground.png" id="2_u4eoc"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bs8j51i8l2g4q" path="res://Fisherman5.png" id="7_tt2gm"]
 [ext_resource type="Texture2D" uid="uid://d3ja3c011xiy0" path="res://Fisherman1.png" id="8_b5nyf"]
 [ext_resource type="Texture2D" uid="uid://hi64fo840rmd" path="res://Fisherman2.png" id="9_nvrmm"]
+[ext_resource type="Script" path="res://fish_spawner.gd" id="10_gfqvw"]
 [ext_resource type="PackedScene" uid="uid://dmutocms1icyv" path="res://fish_1.tscn" id="10_qgu1l"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cpg4g"]
@@ -46,8 +47,6 @@ radius = 43.0
 
 [node name="3Fishing" type="Node2D"]
 script = ExtResource("1_7o8bh")
-metadata/_edit_vertical_guides_ = [-1107.0, 5174.0]
-metadata/_edit_horizontal_guides_ = [1184.0, 657.0, -2789.0]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 2583.0
@@ -62,7 +61,8 @@ sprite_frames = SubResource("SpriteFrames_cpg4g")
 animation = &"PullBack"
 
 [node name="Hook" type="CharacterBody2D" parent="."]
-position = Vector2(327, 462)
+position = Vector2(303, 500)
+scale = Vector2(2, 2)
 
 [node name="Camera2D" type="Camera2D" parent="Hook"]
 position = Vector2(-1, 20)
@@ -78,9 +78,12 @@ scale = Vector2(0.15, 0.15)
 texture = ExtResource("3_2qfjf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hook"]
-position = Vector2(0, 20)
+position = Vector2(-1, 21)
 shape = SubResource("CircleShape2D_ybrl4")
 
 [node name="Fish1" parent="." instance=ExtResource("10_qgu1l")]
 position = Vector2(862, 970)
 scale = Vector2(2, 2)
+
+[node name="FishSpawner" type="Node2D" parent="."]
+script = ExtResource("10_gfqvw")

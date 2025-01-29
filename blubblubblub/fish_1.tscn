@@ -7,6 +7,7 @@
 radius = 43.8634
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rjguf"]
+radius = 37.054
 
 [node name="Fish1" type="CharacterBody2D"]
 position = Vector2(1245, -188)
@@ -25,3 +26,5 @@ shape = SubResource("CircleShape2D_ld78i")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, -4)
 shape = SubResource("CircleShape2D_rjguf")
+
+[node name="ScreenNotifier" type="VisibleOnScreenNotifier2D" parent="."]
