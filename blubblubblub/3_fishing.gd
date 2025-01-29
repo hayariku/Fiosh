@@ -34,11 +34,13 @@ var fish_list = []
 @onready var sprite = $Hook/Sprite2D
 @onready var camera = $Hook/Camera2D
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var progress = $Hook/Camera2D/AnimatedSprite2D2
 var dialogue = load("res://dialogue.tscn")
 
 func _ready():
 	origin_position = hook.global_position
 	camera.make_current()
+	progress.visible = false
 	print("[DEBUG] Camera and sprite initialized.")
 	spawn_fish()  # Spawn fish when the game starts
 
@@ -79,6 +81,8 @@ func start_cast():
 
 	animated_sprite.speed_scale = 2.0
 	animated_sprite.play("PullBack")
+	progress.visible = true
+	progress.play("charge")
 
 	effective_radius = fishing_radius * spoollvl
 	print("[DEBUG] Starting cast. Effective radius set to:", effective_radius)
@@ -94,6 +98,8 @@ func charge_cast(delta):
 	if Input.is_action_just_released("j"):
 		animated_sprite.speed_scale = 1.0
 		animated_sprite.play("Cast")
+		progress.stop()
+		progress.visible = false
 		cast_hook()
 
 # Apply faster physics to the hook and cast
