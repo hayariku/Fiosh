@@ -15,10 +15,12 @@ var hook: Node2D
 var angle_timer: Timer
 var is_caught: bool = false  # Tracks if this fish is caught
 
+const DESPAWN_BOUNDARY = 5000  # Fish despawn if they exceed this limit
+
 func _ready():
 	randomize()
 	# Randomize the fish's weight
-	weight = randf_range(0.5, 5.0)
+	weight = randf_range(1, 5.0)
 	
 	# Spawn the fish within x: 0..5200, y: 700..1200
 	global_position = Vector2(
@@ -48,13 +50,24 @@ func _ready():
 func _physics_process(delta):
 	if is_caught:
 		# Snap to the hook's position and stop movement
-		global_position = hook.global_position + Vector2(0, 10)  # Adjust to lower the fish
+		global_position = hook.global_position + Vector2(0, 10)
 		velocity = Vector2.ZERO
 	elif is_aggro:
 		detect_and_move_to_hook()
 	else:
 		velocity = direction * move_speed
 		move_and_slide()
+
+	# Despawn if the fish is beyond the 5000 pixel range
+	if abs(global_position.x) > DESPAWN_BOUNDARY or abs(global_position.y) > DESPAWN_BOUNDARY:
+		print("[DEBUG] Fish at", global_position, "despawned due to boundary limits.")
+
+		# Notify the fish spawner before removing the fish
+		var spawner = get_parent()
+		if spawner and spawner.has_method("on_fish_despawned"):
+			spawner.on_fish_despawned(self)
+
+		queue_free()
 
 func detect_and_move_to_hook():
 	if hook.global_position.distance_to(global_position) <= detection_radius:
@@ -69,9 +82,9 @@ func _on_area_entered(body):
 func attach_to_hook():
 	is_aggro = false
 	is_caught = true
-	global_position = hook.global_position + Vector2(0, 10)  # Small Y-offset
+	global_position = hook.global_position + Vector2(0, 10)
 	get_tree().root.set_meta("fish_caught", true)
-	print("Fish attached to hook! Weight:", weight)
+	print("[DEBUG] Fish caught! Weight:", weight)
 
 func set_random_angle():
 	# Pick a random angle in degrees from either range 10-35° or 160-200°
@@ -96,4 +109,4 @@ func release_fish():
 	# Call this function to release the fish and allow others to be caught
 	is_caught = false
 	get_tree().root.set_meta("fish_caught", false)
-	print("Fish released!")
+	print("[DEBUG] Fish released!")

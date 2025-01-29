@@ -13,7 +13,7 @@ var can_move_hook = false
 # Fishing variables
 var is_fishing = false
 var reel_speed = 500.0
-var gravity = 100.0
+var gravity = 150.0
 var move_speed = 200.0
 var fishing_radius = 400
 var effective_radius = 0.0
@@ -22,12 +22,10 @@ var can_reel = false
 var reel_enabled = false
 
 # Cast distance and line length based on rod level and spool level
-var rodlvl = 2
-var spoollvl = 2
+var rodlvl = 3
+var spoollvl = 3
 
-# Fish spawning variables
-var fish_scene = preload("res://fish_1.tscn")
-var fish_count = 5
+# Fish tracking variables (No spawning logic here)
 var fish_list = []
 
 @onready var hook = $Hook
@@ -38,8 +36,7 @@ var fish_list = []
 func _ready():
 	origin_position = hook.global_position
 	camera.make_current()
-	print("Camera and sprite initialized.")
-	spawn_fish()  # Spawn fish when the game starts
+	print("[DEBUG] Camera and sprite initialized.")
 
 func _physics_process(delta):
 	handle_input(delta)
@@ -76,7 +73,7 @@ func start_cast():
 	animated_sprite.play("PullBack")
 
 	effective_radius = fishing_radius * spoollvl
-	print("Starting cast. Effective radius set to:", effective_radius)
+	print("[DEBUG] Starting cast. Effective radius set to:", effective_radius)
 
 # Charge cast when holding "j"
 func charge_cast(delta):
@@ -84,31 +81,36 @@ func charge_cast(delta):
 	if cast_time > max_cast_time:
 		cast_time = max_cast_time
 
-	cast_strength = (cast_time / max_cast_time) * (100 + 250 * rodlvl)
+	cast_strength = (cast_time / max_cast_time) * (80 * rodlvl)
 
 	if Input.is_action_just_released("j"):
 		animated_sprite.speed_scale = 1.0
 		animated_sprite.play("Cast")
 		cast_hook()
 
-# Apply physics to the hook and cast
+# Apply faster physics to the hook and cast
 func cast_hook():
 	casting = false
 	is_fishing = true
 	can_move_hook = false
 	reel_enabled = false
 
-	var angle = -45.0
+	var angle = -35.0
 	var radians = deg_to_rad(angle)
 
-	var velocity_multiplier = 2.0
+	var velocity_multiplier = 3.5  # Increased casting speed
 	cast_velocity = Vector2(
 		cast_strength * cos(radians) * velocity_multiplier,
-		cast_strength * sin(radians) * 1.5 * velocity_multiplier
+		cast_strength * sin(radians) * 1.8 * velocity_multiplier  # Faster downward speed
 	)
 
 func apply_physics(delta):
-	cast_velocity.y += gravity * delta
+	# Increase gravity effect above water for faster falling
+	if hook.global_position.y < 500:
+		cast_velocity.y += gravity * 2.5 * delta  # Stronger gravity above water
+	else:
+		cast_velocity.y += gravity * delta  # Normal gravity below water
+
 	hook.global_position += cast_velocity * delta
 
 	# Check if hook hits the water
@@ -118,7 +120,7 @@ func apply_physics(delta):
 		can_move_hook = true
 		var distance_from_origin = hook.global_position.distance_to(origin_position)
 		effective_radius = distance_from_origin
-		print("Hook hit water. Effective radius set to:", effective_radius)
+		print("[DEBUG] Hook hit water. Effective radius set to:", effective_radius)
 
 	# Enable reeling once hook is below a certain Y position
 	if hook.global_position.y >= 500 and not reel_enabled:
@@ -160,9 +162,9 @@ func pull_back_to_origin(delta, fast_reel = false):
 
 	if current_distance + 20 < effective_radius:
 		effective_radius = current_distance + 30
-		print("Reeling in. Updated effective radius to:", effective_radius)
+		print("[DEBUG] Reeling in. Updated effective radius to:", effective_radius)
 
-	print("Effective Radius: ", effective_radius, " | Current Height: ", hook.global_position.y)
+	print("[DEBUG] Effective Radius:", effective_radius, " | Current Height:", hook.global_position.y)
 
 	# When the hook is close enough to the origin, finalize
 	if current_distance < 80:
@@ -184,31 +186,24 @@ func reset_casting_variables():
 	hook.global_position = origin_position
 	can_move_hook = false
 
-# Spawn multiple fish at random positions
-func spawn_fish():
-	for i in range(fish_count):
-		var fish = fish_scene.instantiate()
-		var random_position = Vector2(randf_range(-fishing_radius, fishing_radius), randf_range(400, 600))
-		fish.global_position = random_position
-		add_child(fish)
-		fish_list.append(fish)
-		print("Fish spawned at position:", random_position)
-
 # Collect caught fish once the hook is reeled in
 func collect_caught_fish():
 	var caught_fish = []
-	
+
 	# Find any fish that have is_caught == true
 	for fish in fish_list:
-		if fish.is_caught:
+		if is_instance_valid(fish) and fish.is_caught:
 			caught_fish.append(fish)
-	
+
 	# Remove them from the scene and the fish_list
 	for fish in caught_fish:
-		fish_list.erase(fish)
-		fish.queue_free()
-		print("Fish collected!")
+		if is_instance_valid(fish):
+			fish_list.erase(fish)
+			fish.queue_free()
+			print("[DEBUG] Fish collected!")
 
 	# Reset the "fish_caught" meta so a new fish can be caught later
 	if get_tree().root.has_meta("fish_caught"):
 		get_tree().root.set_meta("fish_caught", false)
+
+	print("[DEBUG] Fish count after collection:", fish_list.size())
