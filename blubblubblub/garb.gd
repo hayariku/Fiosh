@@ -7,21 +7,15 @@ var dialogues = [
 	"Enjoy your adventure!"
 ]
 
-var characterName = [
-	"",
-	"Raccoon",
-	"Skye Crawfish"
-]
-
 # Index to track the current dialogue
 var current_dialogue_index = 0
 
 # Reference the nodes using @onready
-@onready var dialogue_label = $Panel/DialogueLabel
-@onready var next_button = $Panel/NextButton
+@onready var dialogue_label = $DialogueLabel
+@onready var next_button = $NextButton
+@onready var character_name = $CharacterName
 
 func _ready():
-	next_button.modulate.a = 0.0
 	# Update the dialogue label with the first dialogue
 	update_dialogue()
 	# Connect the button's pressed signal
