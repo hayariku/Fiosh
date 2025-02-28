@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://jg6jeac5pwgt"]
 
-[ext_resource type="Script" path="res://dialogue.gd" id="1_plkxy"]
+[ext_resource type="Script" path="res://scripts/dialogue.gd" id="1_plkxy"]
 [ext_resource type="FontFile" uid="uid://cgrlqvjq6xfn2" path="res://fonts/PixelOperator8-Bold.ttf" id="2_klriq"]
 
 [node name="dialogue" type="Control"]

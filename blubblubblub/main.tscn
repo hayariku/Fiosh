@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dx7483bnqip5b"]
 
 [ext_resource type="PackedScene" uid="uid://fakg1lf3mdb7" path="res://hook.tscn" id="1_vyudi"]
-[ext_resource type="Script" path="res://hook.gd" id="2_25yiu"]
+[ext_resource type="Script" path="res://scripts/hook.gd" id="2_25yiu"]
 
 [node name="Main" type="Node2D"]
 
