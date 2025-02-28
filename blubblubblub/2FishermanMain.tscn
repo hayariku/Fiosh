@@ -1,10 +1,10 @@
 [gd_scene load_steps=34 format=3 uid="uid://cawhb8gwge0hh"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_dymhh"]
-[ext_resource type="Texture2D" uid="uid://0k80qmhinkxb" path="res://unnamed.png" id="1_kfrpe"]
-[ext_resource type="Texture2D" uid="uid://c80hf0hge3x5s" path="res://unnamed (1).png" id="3_2fiei"]
-[ext_resource type="Texture2D" uid="uid://clry5x0g8rpw5" path="res://unnamed (2).png" id="5_pdvqp"]
-[ext_resource type="Texture2D" uid="uid://by3wr8env4ytx" path="res://unnamed (3).png" id="6_5bqdj"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_dymhh"]
+[ext_resource type="Texture2D" uid="uid://0k80qmhinkxb" path="res://sprites/unnamed.png" id="1_kfrpe"]
+[ext_resource type="Texture2D" uid="uid://c80hf0hge3x5s" path="res://sprites/unnamed (1).png" id="3_2fiei"]
+[ext_resource type="Texture2D" uid="uid://clry5x0g8rpw5" path="res://sprites/unnamed (2).png" id="5_pdvqp"]
+[ext_resource type="Texture2D" uid="uid://by3wr8env4ytx" path="res://sprites/unnamed (3).png" id="6_5bqdj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lkord"]
 size = Vector2(15.375, 26.875)
