@@ -1,21 +1,40 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5ed0wdkqy31w"]
+[gd_scene load_steps=3 format=3 uid="uid://jg6jeac5pwgt"]
 
-[ext_resource type="FontFile" uid="uid://dqapoy64226ik" path="res://ByteBounce.ttf" id="1_7ramv"]
 [ext_resource type="Script" path="res://dialogue.gd" id="1_plkxy"]
+[ext_resource type="FontFile" uid="uid://cgrlqvjq6xfn2" path="res://fonts/PixelOperator8-Bold.ttf" id="2_klriq"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_xqrrw"]
-font = ExtResource("1_7ramv")
-font_size = 100
-
-[node name="dialogue" type="Node2D"]
+[node name="dialogue" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_plkxy")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 646.0
 
-[node name="Label" type="Label" parent="CanvasLayer"]
-offset_left = 291.0
-offset_top = 527.0
-offset_right = 822.0
-offset_bottom = 596.0
-text = " Skye Crawford"
-label_settings = SubResource("LabelSettings_xqrrw")
+[node name="DialogueLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_top = 507.0
+offset_right = 1150.0
+offset_bottom = 648.0
+theme_override_fonts/font = ExtResource("2_klriq")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="CharacterName" type="Label" parent="Panel"]
+layout_mode = 0
+offset_top = 451.0
+offset_right = 1150.0
+offset_bottom = 509.0
+theme_override_fonts/font = ExtResource("2_klriq")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="NextButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_right = 1149.0
+offset_bottom = 643.0
+focus_mode = 0
+theme_override_colors/font_focus_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
