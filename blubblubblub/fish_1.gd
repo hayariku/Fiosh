@@ -66,6 +66,7 @@ func _physics_process(delta):
 		var spawner = get_parent()
 		if spawner and spawner.has_method("on_fish_despawned"):
 			spawner.on_fish_despawned(self)
+			print("fish gone!!!")
 
 		queue_free()
 

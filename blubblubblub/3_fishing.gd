@@ -29,12 +29,14 @@ var spoollvl = 3
 var fish_scene = preload("res://fish_1.tscn")
 var fish_count = 20
 var fish_list = []
+var respawn_ready = false
 
 @onready var hook = $Hook
 @onready var sprite = $Hook/Sprite2D
 @onready var camera = $Hook/Camera2D
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var progress = $Hook/Camera2D/AnimatedSprite2D2
+@onready var timer = $RespawnTimer
 var dialogue = load("res://dialogue.tscn")
 
 func _ready():
@@ -53,6 +55,8 @@ func _physics_process(delta):
 		apply_physics(delta)
 
 	move_hook(delta)
+	
+	check_respawn()
 
 # Handle input for casting and fishing
 func handle_input(delta):
@@ -213,8 +217,33 @@ func spawn_fish():
 		print("[DEBUG] Fish spawned at:", random_position)
 
 	print("[DEBUG] Current fish count:", fish_list.size())
+	
+	timer.start()
+	print("[DEBUG] Respawn timer started!")
 
 # Collect caught fish once the hook is reeled in
+
+func respawn_fish():
+	respawn_ready = false
+	var temp_fishc = fish_count
+	fish_count = 1
+	spawn_fish()
+	fish_count = temp_fishc
+	
+func check_respawn():
+	if fish_list.size() < fish_count and respawn_ready == true:
+		respawn_fish()
+	
+func _on_respawn_timer_timeout() -> void:
+	respawn_ready = true
+	print("[DEBUG] Timer finished: Respawn ready")
+
+func on_fish_despawned(fish):
+	if is_instance_valid(fish):
+		fish_list.erase(fish)
+		fish.queue_free()
+		print("[DEBUG] Fish Left: ", fish_list.size())
+
 func collect_caught_fish():
 	var caught_fish = []
 

@@ -207,3 +207,9 @@ scale = Vector2(2, 2)
 
 [node name="FishSpawner" type="Node2D" parent="."]
 script = ExtResource("10_gfqvw")
+
+[node name="RespawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]

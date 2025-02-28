@@ -4,10 +4,14 @@ extends Node2D
 @export var number_of_fish: int = 5  # Number of fish to spawn
 @export var spawn_area_size: Vector2 = Vector2(2000, 500)  # The size of the spawning area
 
+# this shi fake
 func _ready():
 	# Spawn the specified number of fish
 	for i in range(number_of_fish):
 		spawn_fish()
+		
+func _physics_process(delta):
+	pass
 
 func spawn_fish():
 	# Ensure the `fish_scene` is assigned
@@ -27,3 +31,4 @@ func spawn_fish():
 
 	# Add the fish to the scene tree
 	add_child(fish)
+	print("spawnwer workin")
