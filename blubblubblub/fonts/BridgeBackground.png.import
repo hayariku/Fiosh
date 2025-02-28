@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://02g0frwxfocy"
-path="res://.godot/imported/BridgeBackground.png-e98db89f6f009ad32b2c278a018469d1.ctex"
+path="res://.godot/imported/BridgeBackground.png-7fc39cb37ef893ec12df81e7efd894a6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BridgeBackground.png"
-dest_files=["res://.godot/imported/BridgeBackground.png-e98db89f6f009ad32b2c278a018469d1.ctex"]
+source_file="res://fonts/BridgeBackground.png"
+dest_files=["res://.godot/imported/BridgeBackground.png-7fc39cb37ef893ec12df81e7efd894a6.ctex"]
 
 [params]
 

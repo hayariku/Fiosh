@@ -4,11 +4,12 @@ extends Control
 var dialogues = [
 	"Ooh you're in rough shape.",
 	"Let's get you patched up",
-	"There, you should be all good now"
+	"There, you should be all good now",
+	""
 ]
 
 var characterName = [
-	"k",
+	"",
 	"Raccoon",
 	"???",
 	"Skye Crawfish"
@@ -41,8 +42,8 @@ func _on_next_button_pressed():
 	# Move to the next dialogue
 	current_dialogue_index += 1
 	# Loop back to the first dialogue after the last one
-	if current_dialogue_index >= dialogues.size():
-		current_dialogue_index = 0
+#	if current_dialogue_index >= dialogues.size():
+#		current_dialogue_index = 0
 	# Update the label with the new dialogue
 	update_dialogue()
 	update_name()
