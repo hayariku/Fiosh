@@ -1,7 +1,7 @@
 [gd_scene load_steps=30 format=3 uid="uid://b655s0iacpemj"]
 
 [ext_resource type="Script" path="res://scripts/3_fishing.gd" id="1_7o8bh"]
-[ext_resource type="Texture2D" uid="uid://02g0frwxfocy" path="res://sprites/BridgeBackground.png" id="2_u4eoc"]
+[ext_resource type="Texture2D" uid="uid://ddd3jtsdvy08e" path="res://sprites/BridgeBackground.png" id="2_u4eoc"]
 [ext_resource type="Texture2D" uid="uid://cdv6u4my1pbg3" path="res://sprites/FishHook.png" id="3_2qfjf"]
 [ext_resource type="Texture2D" uid="uid://bykhyuvgj577y" path="res://sprites/Fisherman3.png" id="5_m3xt8"]
 [ext_resource type="Texture2D" uid="uid://d04nwyjmfo3l1" path="res://sprites/FIsherman 4.png" id="6_rwjlb"]

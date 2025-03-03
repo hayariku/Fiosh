@@ -2,25 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://02g0frwxfocy"
-<<<<<<<< HEAD:blubblubblub/fonts/BridgeBackground.png.import
-path="res://.godot/imported/BridgeBackground.png-7fc39cb37ef893ec12df81e7efd894a6.ctex"
-========
+uid="uid://ddd3jtsdvy08e"
 path="res://.godot/imported/BridgeBackground.png-667baee7749f49f133558ac3820e39e0.ctex"
->>>>>>>> main:blubblubblub/sprites/BridgeBackground.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-<<<<<<<< HEAD:blubblubblub/fonts/BridgeBackground.png.import
-source_file="res://fonts/BridgeBackground.png"
-dest_files=["res://.godot/imported/BridgeBackground.png-7fc39cb37ef893ec12df81e7efd894a6.ctex"]
-========
 source_file="res://sprites/BridgeBackground.png"
 dest_files=["res://.godot/imported/BridgeBackground.png-667baee7749f49f133558ac3820e39e0.ctex"]
->>>>>>>> main:blubblubblub/sprites/BridgeBackground.png.import
 
 [params]
 
