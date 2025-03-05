@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clry5x0g8rpw5"
-path="res://.godot/imported/unnamed (2).png-844d973d431677799b767cfa3bde4336.ctex"
+uid="uid://c80hf0hge3x5s"
+path="res://.godot/imported/skye.png-20438775727fa5cbfb36a20df465724d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/unnamed (2).png"
-dest_files=["res://.godot/imported/unnamed (2).png-844d973d431677799b767cfa3bde4336.ctex"]
+source_file="res://sprites/skye.png"
+dest_files=["res://.godot/imported/skye.png-20438775727fa5cbfb36a20df465724d.ctex"]
 
 [params]
 

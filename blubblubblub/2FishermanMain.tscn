@@ -1,11 +1,11 @@
 [gd_scene load_steps=36 format=3 uid="uid://cawhb8gwge0hh"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_dymhh"]
-[ext_resource type="Texture2D" uid="uid://0k80qmhinkxb" path="res://sprites/unnamed.png" id="1_kfrpe"]
-[ext_resource type="Texture2D" uid="uid://c80hf0hge3x5s" path="res://sprites/unnamed (1).png" id="3_2fiei"]
+[ext_resource type="Texture2D" uid="uid://0k80qmhinkxb" path="res://sprites/cave.png" id="1_kfrpe"]
+[ext_resource type="Texture2D" uid="uid://c80hf0hge3x5s" path="res://sprites/skye.png" id="3_2fiei"]
 [ext_resource type="Script" path="res://raccooninteract.gd" id="5_62qdt"]
-[ext_resource type="Texture2D" uid="uid://clry5x0g8rpw5" path="res://sprites/unnamed (2).png" id="5_pdvqp"]
-[ext_resource type="Texture2D" uid="uid://by3wr8env4ytx" path="res://sprites/unnamed (3).png" id="6_5bqdj"]
+[ext_resource type="Texture2D" uid="uid://clry5x0g8rpw5" path="res://sprites/raccoon.png" id="5_pdvqp"]
+[ext_resource type="Texture2D" uid="uid://by3wr8env4ytx" path="res://sprites/tophat.png" id="6_5bqdj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lkord"]
 size = Vector2(15.375, 26.875)
@@ -194,6 +194,11 @@ offset_bottom = 62.0
 texture = ExtResource("1_kfrpe")
 metadata/_edit_use_anchors_ = true
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(142, -146)
+zoom = Vector2(1.6, 1.6)
+position_smoothing_enabled = true
+
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(20, -41)
 collision_layer = 3
@@ -202,11 +207,6 @@ script = ExtResource("1_dymhh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_lkord")
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(1, 0)
-zoom = Vector2(1.5, 1.5)
-position_smoothing_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 position = Vector2(0, -1)

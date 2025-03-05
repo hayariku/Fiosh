@@ -15,10 +15,10 @@ var input = Vector2.ZERO
 var animation_state = "idle"
 
 @onready var sprite = $AnimatedSprite2D
-@onready var camera = $Camera2D  # Player-specific camera
+#@onready var camera = $Camera2D  # Player-specific camera
 
 func _ready():
-	$Camera2D.make_current()
+	pass
 
 func _physics_process(delta):
 	player_movement(delta)
