@@ -30,6 +30,9 @@ var fish_scene = preload("res://fish_1.tscn")
 var fish_count = 20
 var fish_list = []
 var respawn_ready = false
+var respawn_radius = 3000
+@onready var respawn_pos = $Hook.global_position
+
 
 @onready var hook = $Hook
 @onready var sprite = $Hook/Sprite2D
@@ -39,12 +42,14 @@ var respawn_ready = false
 @onready var timer = $RespawnTimer
 var dialogue = load("res://dialogue.tscn")
 
+# signal fish_count_update
+
 func _ready():
 	origin_position = hook.global_position
 	camera.make_current()
 	progress.visible = false
 	print("[DEBUG] Camera and sprite initialized.")
-	spawn_fish()  # Spawn fish when the game starts
+	spawn_fish(false)  # Spawn fish when the game starts
 
 func _physics_process(delta):
 	handle_input(delta)
@@ -119,7 +124,7 @@ func cast_hook():
 	var velocity_multiplier = 3.5  # Increased casting speed
 	cast_velocity = Vector2(
 		cast_strength * cos(radians) * velocity_multiplier,
-		cast_strength * sin(radians) * 1.8 * velocity_multiplier  # Faster downward speed
+		cast_strength * sin(radians) * 1.4 * velocity_multiplier  # Faster downward speed
 	)
 
 func apply_physics(delta):
@@ -205,11 +210,11 @@ func reset_casting_variables():
 	can_move_hook = false
 
 # Spawn multiple fish at random positions
-func spawn_fish():
+func spawn_fish(respawn):
 	for i in range(fish_count):
 		var fish = fish_scene.instantiate()
-		var random_position = Vector2(randf_range(-fishing_radius, fishing_radius), randf_range(400, 600))
-		fish.global_position = random_position
+		var random_position = Vector2(randf_range(respawn_pos.x + 1996, respawn_pos.x + respawn_radius), randf_range(respawn_pos.y + 794, respawn_pos.y + respawn_radius))
+		fish.global_position = random_position #not determined by fish_1 script any more
 
 		add_child(fish)
 		fish_list.append(fish)
@@ -227,7 +232,7 @@ func respawn_fish():
 	respawn_ready = false
 	var temp_fishc = fish_count
 	fish_count = 1
-	spawn_fish()
+	spawn_fish(true)
 	fish_count = temp_fishc
 	
 func check_respawn():
@@ -251,6 +256,7 @@ func collect_caught_fish():
 	for fish in fish_list:
 		if is_instance_valid(fish) and fish.is_caught:
 			caught_fish.append(fish)
+			#emit_signal("fish_count_update")
 
 	# Remove them from the scene and the fish_list
 	for fish in caught_fish:

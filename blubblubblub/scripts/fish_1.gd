@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var angle_change_interval: float = 2.0  # Time interval (seconds) to change direction
 
 # Weight impacts fish size in-game
-@export var weight: float = 1.0  # We'll randomize this in _ready()
+@export var weight: float = 1.0  #randomized in in _ready()
 
 # States
 var is_aggro: bool = false
@@ -16,17 +16,22 @@ var angle_timer: Timer
 var is_caught: bool = false  # Tracks if this fish is caught
 
 const DESPAWN_BOUNDARY = 5000  # Fish despawn if they exceed this limit
+var dist_from_hook = 0
+
+@onready var base = get_parent()
+@onready var respawn_pos = get_parent().get_node("Hook").global_position
+@onready var respawn_radius = base.respawn_radius
 
 func _ready():
 	randomize()
 	# Randomize the fish's weight
 	weight = randf_range(1, 5.0)
 	
-	# Spawn the fish within x: 0..5200, y: 700..1200
-	global_position = Vector2(
-		randf_range(0, 5200),
-		randf_range(700, 1200)
-	)
+	#fish spawn location in 3_fishing now
+	#global_position = Vector2(
+	#	randf_range(0, 5200),
+	#	randf_range(700, 1200)
+	#)
 
 	# Adjust the fish's scale based on its randomized weight
 	scale = Vector2.ONE * weight  
@@ -57,11 +62,14 @@ func _physics_process(delta):
 	else:
 		velocity = direction * move_speed
 		move_and_slide()
-
-	# Despawn if the fish is beyond the 5000 pixel range
-	if abs(global_position.x) > DESPAWN_BOUNDARY or abs(global_position.y) > DESPAWN_BOUNDARY:
+		
+	dist_from_hook = sqrt(((respawn_pos.x - global_position.x) ** 2) + ((respawn_pos.y - global_position.y) ** 2))
+	# Despawn if the fish is beyond the spawn radius
+	#if abs(global_position.x) > DESPAWN_BOUNDARY or abs(global_position.y) > DESPAWN_BOUNDARY:
+		#print("[DEBUG] Fish at", global_position, "despawned due to boundary limits.")
+	if dist_from_hook > respawn_radius:
+		print("Fish distance from hook: ", dist_from_hook)
 		print("[DEBUG] Fish at", global_position, "despawned due to boundary limits.")
-
 		# Notify the fish spawner before removing the fish
 		var spawner = get_parent()
 		if spawner and spawner.has_method("on_fish_despawned"):

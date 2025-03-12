@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://df7mkv1wf1jny"]
+
+[ext_resource type="Script" path="res://scripts/fish_count.gd" id="1_fqi1j"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kl3yg"]
+font_size = 64
+
+[node name="fishCount" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fqi1j")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 1112.0
+offset_right = 1152.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.906
+offset_left = 1088.0
+offset_right = 1111.0
+offset_bottom = 51.76
+label_settings = SubResource("LabelSettings_kl3yg")
