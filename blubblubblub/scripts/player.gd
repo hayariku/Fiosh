@@ -24,7 +24,7 @@ func _physics_process(delta):
 	player_movement(delta)
 	update_animation()
 
-	if Input.is_action_just_pressed("g"):
+	if Input.is_action_just_pressed("Go Fishing"):
 		# Switch to fishing scene
 		get_tree().change_scene_to_file("res://3Fishing.tscn")
 		
@@ -33,8 +33,8 @@ func _physics_process(delta):
 		#get_tree().change_scene_to_file("res://room.tscn")
 
 func get_input(): 
-	input.x = int(Input.is_action_pressed("ui_right")) + int(Input.is_action_pressed("d")) - int(Input.is_action_pressed("ui_left")) - int(Input.is_action_pressed("a"))
-	input.y = int(Input.is_action_pressed("ui_down")) + int(Input.is_action_pressed("s")) - int(Input.is_action_pressed("ui_up")) - int(Input.is_action_pressed("w"))
+	input.x = int(Input.is_action_pressed("ui_right")) + int(Input.is_action_pressed("Right")) - int(Input.is_action_pressed("ui_left")) - int(Input.is_action_pressed("Left"))
+	input.y = int(Input.is_action_pressed("ui_down")) + int(Input.is_action_pressed("Down")) - int(Input.is_action_pressed("ui_up")) - int(Input.is_action_pressed("Forward"))
 	return input.normalized()
 
 func player_movement(delta):

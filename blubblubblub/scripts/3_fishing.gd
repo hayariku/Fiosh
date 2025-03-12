@@ -60,15 +60,15 @@ func _physics_process(delta):
 
 # Handle input for casting and fishing
 func handle_input(delta):
-	if Input.is_action_pressed("F") and reel_enabled:
+	if Input.is_action_pressed("Reel Fast") and reel_enabled:
 		pull_back_to_origin(delta, true)
-	elif Input.is_action_pressed("f") and reel_enabled:
+	elif Input.is_action_pressed("Reel") and reel_enabled:
 		pull_back_to_origin(delta)
-	elif Input.is_action_just_pressed("j") and not casting and can_cast:
+	elif Input.is_action_just_pressed("Cast") and not casting and can_cast:
 		start_cast()
-	elif Input.is_action_just_pressed("g") and not is_fishing:
+	elif Input.is_action_just_pressed("Go Fishing") and not is_fishing:
 		get_tree().change_scene_to_file("res://2FishermanMain.tscn")
-	elif Input.is_action_just_pressed("m"):
+	elif Input.is_action_just_pressed("Debug"):
 		var text = dialogue.instantiate()
 		add_child(text)
 		
@@ -99,7 +99,7 @@ func charge_cast(delta):
 
 	cast_strength = (cast_time / max_cast_time) * (80 * rodlvl)
 
-	if Input.is_action_just_released("j"):
+	if Input.is_action_just_released("Cast"):
 		animated_sprite.speed_scale = 1.0
 		animated_sprite.play("Cast")
 		progress.stop()
