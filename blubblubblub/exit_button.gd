@@ -9,7 +9,9 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+
 func _on_next_button_pressed():
 	get_tree().change_scene_to_file("res://2FishermanMain.tscn")
+func _process(delta):
+	if Input.is_action_just_released("Escape"):
+		get_tree().change_scene_to_file("res://2FishermanMain.tscn")

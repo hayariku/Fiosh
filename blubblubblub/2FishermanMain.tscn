@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cawhb8gwge0hh"]
+[gd_scene load_steps=34 format=3 uid="uid://cawhb8gwge0hh"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_dymhh"]
 [ext_resource type="Texture2D" uid="uid://0k80qmhinkxb" path="res://sprites/cave.png" id="1_kfrpe"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://2et33s0sjxys" path="res://sprites/skyeleft3.png" id="10_lasbf"]
 [ext_resource type="Texture2D" uid="uid://dcei8ciyelh0q" path="res://sprites/skyeup2.png" id="11_6et56"]
 [ext_resource type="Texture2D" uid="uid://pr66l4mer2xe" path="res://sprites/skyeup3.png" id="12_2xe1r"]
+[ext_resource type="Script" path="res://scene_swapper.gd" id="16_hl07k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lkord"]
 size = Vector2(15.375, 26.875)
@@ -112,28 +113,32 @@ normal = Vector2(-1, 0)
 distance = 120.0
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_jn7ff"]
-a = Vector2(73, -220)
+a = Vector2(90, -210)
 b = Vector2(132, -91)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_df0nl"]
-a = Vector2(-173, -222)
-b = Vector2(73, -220)
+a = Vector2(-175, -214)
+b = Vector2(90, -210)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_75un8"]
 a = Vector2(278, -182)
 b = Vector2(132, -92)
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_awkom"]
+a = Vector2(132, 12)
+b = Vector2(-2, 8)
+
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ibrww"]
-a = Vector2(323, -113)
-b = Vector2(206, -45)
+a = Vector2(297, -103)
+b = Vector2(204, -45)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_5uwcy"]
 a = Vector2(206, -46)
 b = Vector2(430, 32)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_7k2k6"]
-a = Vector2(278, -182)
-b = Vector2(328, -113)
+a = Vector2(281, -183)
+b = Vector2(440, -179)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bfrjk"]
 radius = 401.995
@@ -143,13 +148,16 @@ radius = 401.995
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_02ugn"]
 size = Vector2(260, 306.667)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fyvty"]
+size = Vector2(22, 79)
+
 [node name="2FishermanMain" type="Node2D"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -168.0
-offset_top = -346.0
+offset_top = -351.0
 offset_right = 444.0
-offset_bottom = 62.0
+offset_bottom = 57.0
 texture = ExtResource("1_kfrpe")
 metadata/_edit_use_anchors_ = true
 
@@ -202,7 +210,12 @@ shape = SubResource("SegmentShape2D_df0nl")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("SegmentShape2D_75un8")
 
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(304, -112)
+shape = SubResource("SegmentShape2D_awkom")
+
 [node name="CollisionShape2D9" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(5, -2)
 shape = SubResource("SegmentShape2D_ibrww")
 
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="StaticBody2D"]
@@ -212,7 +225,7 @@ shape = SubResource("SegmentShape2D_5uwcy")
 position = Vector2(-4, 1)
 shape = SubResource("SegmentShape2D_7k2k6")
 
-[node name="TextureRect3" type="TextureRect" parent="."]
+[node name="Raccoon" type="TextureRect" parent="."]
 offset_left = -116.0
 offset_top = -76.0
 offset_right = 278.0
@@ -221,26 +234,34 @@ scale = Vector2(0.15, 0.15)
 texture = ExtResource("5_pdvqp")
 metadata/_edit_use_anchors_ = true
 
-[node name="Area2D" type="Area2D" parent="TextureRect3"]
+[node name="Area2D" type="Area2D" parent="Raccoon"]
 position = Vector2(220, 220)
 collision_mask = 2
 script = ExtResource("5_62qdt")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="TextureRect3/Area2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Raccoon/Area2D"]
 shape = SubResource("CircleShape2D_bfrjk")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="TextureRect3"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Raccoon"]
 physics_material_override = SubResource("PhysicsMaterial_qoxk5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect3/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Raccoon/StaticBody2D"]
 position = Vector2(216.667, 200)
 shape = SubResource("RectangleShape2D_02ugn")
 
 [node name="TextureRect4" type="TextureRect" parent="."]
 offset_left = -98.0
-offset_top = -95.0
+offset_top = -97.0
 offset_right = 376.0
-offset_bottom = 431.0
+offset_bottom = 429.0
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("6_5bqdj")
 metadata/_edit_use_anchors_ = true
+
+[node name="SceneSwapper" type="Area2D" parent="."]
+collision_mask = 2
+script = ExtResource("16_hl07k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SceneSwapper"]
+position = Vector2(433, -113)
+shape = SubResource("RectangleShape2D_fyvty")
