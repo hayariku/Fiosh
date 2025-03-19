@@ -1,16 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://bnnej5nn7axbe"]
+[gd_scene load_steps=10 format=3 uid="uid://bnnej5nn7axbe"]
 
+[ext_resource type="Script" path="res://shopscene.gd" id="1_hrw0h"]
 [ext_resource type="Texture2D" uid="uid://c56tb7aoqyomc" path="res://sprites/pixil-frame-0 (20).png" id="1_m7qra"]
 [ext_resource type="Texture2D" uid="uid://bw6oarjdfya8j" path="res://sprites/pixil-frame-0 (21).png" id="2_t0h5b"]
 [ext_resource type="Texture2D" uid="uid://clry5x0g8rpw5" path="res://sprites/raccoon.png" id="3_qdve1"]
 [ext_resource type="Texture2D" uid="uid://dwalx8qgkvk5a" path="res://sprites/exit.png" id="4_8igrf"]
 [ext_resource type="Script" path="res://exit_button.gd" id="5_cf7b7"]
+[ext_resource type="FontFile" uid="uid://dqapoy64226ik" path="res://fonts/ByteBounce.ttf" id="7_1viay"]
+[ext_resource type="Texture2D" uid="uid://bshcg5q3h2fq6" path="res://sprites/pixil-frame-0 (25).png" id="8_4yunc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6fhmx"]
 radius = 24.0
 height = 182.0
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_hrw0h")
 
 [node name="shop" type="Sprite2D" parent="."]
 position = Vector2(576, 360)
@@ -93,3 +97,16 @@ texture = ExtResource("4_8igrf")
 position = Vector2(580, 393)
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_6fhmx")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 106.25
+offset_top = 8.0
+offset_right = 186.25
+offset_bottom = 56.0
+theme_override_fonts/font = ExtResource("7_1viay")
+theme_override_font_sizes/font_size = 53
+
+[node name="Pixil-frame-0(25)" type="Sprite2D" parent="."]
+position = Vector2(55.2, 32)
+scale = Vector2(4.8, 4.8)
+texture = ExtResource("8_4yunc")
